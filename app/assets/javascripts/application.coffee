@@ -13,43 +13,37 @@ jQuery ($)->
         (flash = $(".flash-container .alert-error"))
           .fadeIn()
           .click -> $(this).fadeOut()
-          setTimeout (-> flash.fadeOut()), 3000
+        setTimeout (-> flash.fadeOut()), 3000
         return
 
-      $('#progress, #filename, #upload-btn, #serialized-text, #copy-serialized').remove()
+      $('#progress, #serialized-text, #copy-serialized').hide()
+      $('#serialized-text').text('')
+      $('#upload-btn, #filename').show()
 
-      data.context = $('<button id="upload-btn"/>').text('Upload')
-        .addClass('btn btn-primary')
-        .appendTo($contents)
+      data.context = $('#upload-btn')
         .click ->
-          data.context = $(this).remove()
+          data.context = $(this).hide()
           data.submit()
-      $('<span id="filename"/>').text(filename).appendTo($contents)
+      $('#filename').text(filename)
 
     submit: (e, data)->
-      $('<div id="progress"/>').addClass('progress progress-success progress-striped')
-        .append('<div class="bar"/>')
-        .appendTo($contents)
+      $('#progress').show()
 
     progress: (e, data)->
       progress = parseInt(data.loaded / data.total * 100,  10)
       $('#progress .bar').css('width', "#{progress}%")
 
     done: (e, data)->
-      $('<textarea id="serialized-text"/>').text(data.result.serializedText)
-        .appendTo($contents)
+      $('#serialized-text').text(data.result.serializedText)
         .focus()
         .select()
-
-      $('<button id="copy-serialized"/>').text('Copy')
-        .addClass('btn btn-info')
-        .appendTo($contents)
-        .zclip
-          path: '/javascripts/ZeroClipboard.swf'
-          copy: $('#serialized-text').text()
-          afterCopy: ->
-            (flash = $(".flash-container .alert-info"))
-              .fadeIn()
-              .click -> $(this).fadeOut()
-            setTimeout (-> flash.fadeOut()), 3000
+      $('#serialized-text, #copy-serialized').show()
+      $('#copy-serialized').zclip
+        path: '/javascripts/ZeroClipboard.swf'
+        copy: $('#serialized-text').text()
+        afterCopy: ->
+          (flash = $(".flash-container .alert-info"))
+            .fadeIn()
+            .click -> $(this).fadeOut()
+          setTimeout (-> flash.fadeOut()), 3000
 

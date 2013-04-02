@@ -21,15 +21,17 @@
           }), 3000);
           return;
         }
-        $('#progress, #filename, #upload-btn, #serialized-text, #copy-serialized').remove();
-        data.context = $('<button id="upload-btn"/>').text('Upload').addClass('btn btn-primary').appendTo($contents).click(function() {
-          data.context = $(this).remove();
+        $('#progress, #serialized-text, #copy-serialized').hide();
+        $('#serialized-text').text('');
+        $('#upload-btn, #filename').show();
+        data.context = $('#upload-btn').click(function() {
+          data.context = $(this).hide();
           return data.submit();
         });
-        return $('<span id="filename"/>').text(filename).appendTo($contents);
+        return $('#filename').text(filename);
       },
       submit: function(e, data) {
-        return $('<div id="progress"/>').addClass('progress progress-success progress-striped').append('<div class="bar"/>').appendTo($contents);
+        return $('#progress').show();
       },
       progress: function(e, data) {
         var progress;
@@ -38,8 +40,9 @@
         return $('#progress .bar').css('width', "" + progress + "%");
       },
       done: function(e, data) {
-        $('<textarea id="serialized-text"/>').text(data.result.serializedText).appendTo($contents).focus().select();
-        return $('<button id="copy-serialized"/>').text('Copy').addClass('btn btn-info').appendTo($contents).zclip({
+        $('#serialized-text').text(data.result.serializedText).focus().select();
+        $('#serialized-text, #copy-serialized').show();
+        return $('#copy-serialized').zclip({
           path: '/javascripts/ZeroClipboard.swf',
           copy: $('#serialized-text').text(),
           afterCopy: function() {
