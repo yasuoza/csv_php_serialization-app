@@ -1,3 +1,6 @@
+-content_for :include do
+  =javascript_include_tag 'jquery.fileupload.min', 'jquery.zclip.min'
+
 h2 Drag and Drop csv file upload
 
 =form_tag url_for(:upload, format: :json), method: :put, multipart: true, remote: true do
