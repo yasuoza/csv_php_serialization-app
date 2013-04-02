@@ -7,6 +7,7 @@
     return $('#fileupload').fileupload({
       dataType: 'json',
       dropZone: $('#drop-zone'),
+      maxNumberOfFiles: 1,
       add: function(e, data) {
         var filename, flash;
 
@@ -23,12 +24,10 @@
         }
         $('#progress, #serialized-text, #copy-serialized').hide();
         $('#serialized-text').text('');
-        $('#upload-btn, #filename').show();
-        data.context = $('#upload-btn').click(function() {
-          data.context = $(this).hide();
-          return data.submit();
-        });
-        return $('#filename').text(filename);
+        $('#filename').show();
+        $('#progress .bar').css('width', "0%");
+        $('#filename').text(filename);
+        return data.submit();
       },
       submit: function(e, data) {
         return $('#progress').show();
@@ -40,6 +39,7 @@
         return $('#progress .bar').css('width', "" + progress + "%");
       },
       done: function(e, data) {
+        console.log(data.result.serializedText);
         $('#serialized-text').text(data.result.serializedText).focus().select();
         $('#serialized-text, #copy-serialized').show();
         return $('#copy-serialized').zclip({

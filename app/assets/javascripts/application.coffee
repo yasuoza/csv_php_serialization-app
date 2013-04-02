@@ -4,6 +4,7 @@ jQuery ($)->
   $('#fileupload').fileupload
     dataType: 'json'
     dropZone: $('#drop-zone')
+    maxNumberOfFiles: 1
 
     add: (e, data)->
       e.preventDefault()
@@ -18,13 +19,11 @@ jQuery ($)->
 
       $('#progress, #serialized-text, #copy-serialized').hide()
       $('#serialized-text').text('')
-      $('#upload-btn, #filename').show()
-
-      data.context = $('#upload-btn')
-        .click ->
-          data.context = $(this).hide()
-          data.submit()
+      $('#filename').show()
+      $('#progress .bar').css('width', "0%")
       $('#filename').text(filename)
+
+      data.submit()
 
     submit: (e, data)->
       $('#progress').show()
@@ -34,6 +33,8 @@ jQuery ($)->
       $('#progress .bar').css('width', "#{progress}%")
 
     done: (e, data)->
+      console.log data.result.serializedText
+
       $('#serialized-text').text(data.result.serializedText)
         .focus()
         .select()
