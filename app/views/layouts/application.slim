@@ -4,8 +4,7 @@ html
     title= [@title, "php_serialization"].compact.join(" | ")
     = stylesheet_link_tag 'application', 'bootstrap', 'bootstrap-responsive'
     =javascript_include_tag 'jquery', 'jquery-ujs', 'application',
-                            'jquery.iframe-transport', 'vendor/jquery.ui.widget', 'jquery.fileupload',
-                            'jquery.zclip.min'
+                            'jquery.fileupload.min', 'jquery.zclip.min'
     =yield_content :include
     body
       .flash-container
