@@ -43,7 +43,7 @@ jQuery ($)->
         .select()
       $('#serialized-text, #copy-serialized').show()
       $('#copy-serialized').zclip
-        path: '/javascripts/ZeroClipboard.swf'
+        path: '/vendor/ZeroClipboard.swf'
         copy: $('#serialized-text').text()
         afterCopy: ->
           (flash = $(".flash-container .alert-info"))
