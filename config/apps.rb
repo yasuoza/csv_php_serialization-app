@@ -44,6 +44,8 @@ Padrino.configure_apps do
 
     if Padrino.env == :development
       config.expand    = true
+      config.digest    = false
+      config.manifest  = false
     end
   end
 end
