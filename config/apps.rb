@@ -41,6 +41,10 @@ Padrino.configure_apps do
     config.manifest    = Sprockets::Manifest.new(sprockets, manifest_path)
     config.digest      = true
     config.public_path = public_folder
+
+    if Padrino.env == :development
+      config.expand    = true
+    end
   end
 end
 

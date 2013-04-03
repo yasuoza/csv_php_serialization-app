@@ -2,8 +2,8 @@ doctype 5
 html
   head
     title= [@title, "php_serialization"].compact.join(" | ")
-    link href=stylesheet_path('application') media="screen" type="text/css" rel="stylesheet"
-    script src=javascript_path('application')
+    ==stylesheet_tag('application')
+    ==javascript_tag('application')
     =yield_content :include
     body
       .flash-container
