@@ -2,8 +2,8 @@ doctype 5
 html
   head
     title= [@title, "php_serialization"].compact.join(" | ")
-    = stylesheet_link_tag 'application', 'bootstrap', 'bootstrap-responsive'
-    =javascript_include_tag 'jquery', 'jquery-ujs', 'application'
+    link href=stylesheet_path('application') media="screen" type="text/css" rel="stylesheet"
+    script src=javascript_path('application')
     =yield_content :include
     body
       .flash-container

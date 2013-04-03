@@ -5,7 +5,7 @@
 #   Padrino.mount('blog').to('/blog')
 #   Padrino.mount('blog', :app_class => 'BlogApp').to('/blog')
 #   Padrino.mount('blog', :app_file =>  'path/to/blog/app.rb').to('/blog')
-#
+
 # You can also map apps to a specified host:
 #
 #   Padrino.mount('Admin').host('admin.example.org')
@@ -26,10 +26,22 @@
 # override these settings in the subapps as needed.
 #
 Padrino.configure_apps do
-  # enable :sessions
+  enable :sessions
   set :session_secret, '86a5489afdb990f9cdf983441441fdbc449bc7fb1c9e383b724e01f8aef81b64'
   set :protection, true
   set :protect_from_csrf, true
+
+  # Sprockets configuration
+  # http://arthurchiu.com/posts/20130328-sprockets_bower_padrino
+  set :sprockets, SPROCKETS
+  Sprockets::Helpers.configure do |config|
+    manifest_path      = Padrino.root('public/assets/manifest.json')
+    config.environment = sprockets
+    config.prefix      = '/assets'
+    config.manifest    = Sprockets::Manifest.new(sprockets, manifest_path)
+    config.digest      = true
+    config.public_path = public_folder
+  end
 end
 
 # Mounts the core application for this project
