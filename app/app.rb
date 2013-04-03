@@ -1,12 +1,11 @@
 module PhpSerializer
   class App < Padrino::Application
-    register SassInitializer
+    # register SassInitializer
     use ActiveRecord::ConnectionAdapters::ConnectionManagement
     register Padrino::Rendering
     register Padrino::Mailer
     register Padrino::Helpers
-
-    enable :sessions
+    helpers Sprockets::Helpers
 
     get :index do
       render :index

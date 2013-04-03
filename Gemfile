@@ -14,13 +14,13 @@ gem 'rake'
 
 # Component requirements
 gem 'sass'
+gem 'coffee-script'
 gem 'slim'
 gem 'activerecord', '>= 3.1', :require => 'active_record'
 gem 'sqlite3'
 
-# Test requirements
-gem 'rspec', :group => 'test'
-gem 'rack-test', :require => 'rack/test', :group => 'test'
+gem 'sprockets'
+gem 'sprockets-helpers'
 
 # Padrino Stable Gem
 gem 'padrino', '0.11.0'
@@ -28,10 +28,13 @@ gem 'padrino', '0.11.0'
 # php serialization
 gem 'php-serialization', github: 'YasuOza/ruby-php-serialization', branch: 'fix/multibyte_char_length'
 
-# Or Padrino Edge
-# gem 'padrino', :github => 'padrino/padrino-framework'
+group :development do
+  gem 'yui-compressor'
+  gem 'uglifier'
+end
 
-# Or Individual Gems
-# %w(core gen helpers cache mailer admin).each do |g|
-#   gem 'padrino-' + g, '0.11.0'
-# end
+group :test do
+  gem 'rspec'
+  gem 'rack-test', :require => 'rack/test'
+end
+
