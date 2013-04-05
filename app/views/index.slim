@@ -1,5 +1,7 @@
 
-h2 Drag and Drop csv file upload
+h2
+  Drag and Drop csv file upload
+  img src=image_path('new2.gif')
 
 =form_tag url_for(:upload, format: :json), method: :put, multipart: true, remote: true do
   =file_field_tag :file, id: 'fileupload', data: {url: url_for(:upload, format: :json)}, hidden: true

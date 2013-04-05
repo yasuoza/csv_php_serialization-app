@@ -36,8 +36,6 @@ jQuery ($)->
       $('#progress .bar').css('width', "#{progress}%")
 
     done: (e, data)->
-      console.log data.result.serializedText
-
       $('#serialized-text').text(data.result.serializedText)
         .focus()
         .select()
