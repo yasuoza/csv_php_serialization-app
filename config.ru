@@ -6,10 +6,4 @@
 
 require File.expand_path("../config/boot.rb", __FILE__)
 
-if Padrino.env == :development
-  map '/assets' do
-    run PhpSerializer::App.sprockets
-  end
-end
-
 run Padrino.application
