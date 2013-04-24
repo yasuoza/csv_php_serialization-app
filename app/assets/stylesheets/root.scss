@@ -36,3 +36,8 @@
 #progress, #filename, #upload-btn, #serialized-text, #copy-serialized {
   display: none;
 }
+
+#copy-serialized {
+  float: left;
+  margin-right: 20px;
+}

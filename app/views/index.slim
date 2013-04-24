@@ -20,4 +20,8 @@ span#filename
 
 textarea#serialized-text
 
-button#copy-serialized.btn.btn-info Copy
+button#copy-serialized.btn.btn-info Copy to Clipboard
+=form_tag url_for(:download), method: :post do
+  input name='serialized_text' type='hidden'
+  input name='csv_filename' type='hidden'
+  button#copy-serialized.btn.btn-primary Download

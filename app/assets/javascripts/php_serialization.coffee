@@ -27,6 +27,7 @@ jQuery ($)->
           $(this).hide()
           data.submit()
       $('#filename').text(filename)
+      $('input[name=csv_filename]').val(filename)
 
     submit: (e, data)->
       $('#progress').show()
@@ -40,6 +41,7 @@ jQuery ($)->
         .focus()
         .select()
       $('#serialized-text, #copy-serialized').show()
+      $('input[name=serialized_text]').val(data.result.serializedText)
       $('#copy-serialized').zclip
         path: '/vendor/ZeroClipboard.swf'
         copy: $('#serialized-text').text()
