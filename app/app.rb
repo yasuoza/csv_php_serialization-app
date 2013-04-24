@@ -30,7 +30,7 @@ module PhpSerializer
       serialized_text = params[:serialized_text]
       csv_file_name = params[:csv_filename]
       attachment csv_file_name.sub('.csv', '.serialized')
-      serialized_text
+      serialized_text.gsub(/\r\n?/, "\n")
     end
   end
 end
