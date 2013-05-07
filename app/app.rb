@@ -13,7 +13,9 @@ module PhpSerializer
 
     put :upload , provides: [:html, :js] do
       if file = params[:file]
-        return 403 unless file[:type] == 'text/csv'
+        # Macintosh gives us file type as 'text/csv'
+        # Windows gives us file type as 'application/octet-stream'
+        return 403 unless file[:type] == 'text/csv' || file[:type] == 'application/octet-stream'
         file_content = File.open(file[:tempfile], external_encoding: 'cp932', internal_encoding: 'utf-8').read
         @result = SerializeBuilder.build!(file_content)
       end
