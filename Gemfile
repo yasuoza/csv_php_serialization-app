@@ -23,10 +23,10 @@ gem 'sprockets'
 gem 'sprockets-helpers'
 
 # Padrino Stable Gem
-gem 'padrino', '0.11.0'
+gem 'padrino', '~> 0.11.0'
 
 # php serialization
-gem 'php-serialization', github: 'YasuOza/ruby-php-serialization', branch: 'fix/multibyte_char_length'
+gem 'php-serialization', github: 'yasuoza/ruby-php-serialization', branch: 'fix/multibyte_char_length'
 
 group :development do
   gem 'yui-compressor'
