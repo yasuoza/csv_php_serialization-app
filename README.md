@@ -2,6 +2,10 @@
 
 php's `json_decode` was so slow in some env, I used php serialized json file as a static web server's database.
 
+## Demo
+
+![capture](https://raw.github.com/yasuoza/csv_php_serialization-app/master/app/assets/images/screen_capture.gif)
+
 ## Why csv to php serialized object
 
 Do you like this?
